@@ -22,8 +22,11 @@
         </screenshot>
     </screenshots>
     <releases>
-        <release date="2023-02-03" version="4.17.7" />
+        <release version="4.17.7" date="2024-04-05">
+            <description></description>
+        </release>
+        <release date="2023-02-03" version="4.17.7"/>
     </releases>
-    <content_rating type="oars-1.1" />
+    <content_rating type="oars-1.1"/>
     <update_contact>flatpak_at_hexchain.org</update_contact>
 </component>
