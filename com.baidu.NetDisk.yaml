@@ -9,13 +9,13 @@ command: baidunetdisk
 
 add-extensions:
   org.freedesktop.Platform.Locale:
-    directory: share/runtime/locale
+    directory: /usr/share/runtime/locale
     subpaths:
       - zh_CN
     version: '24.08'
     add-platform: true
   org.freedesktop.Platform.I18n:
-    directory: share/runtime/i18n
+    directory: /usr/share/runtime/i18n
     subpaths:
       - zh_CN
     version: '24.08'
@@ -80,7 +80,7 @@ modules:
           - if [ -f data.tar.xz ]; then bsdtar -xf data.tar.xz; fi
           - if [ -f data.tar.zst ]; then bsdtar -xf data.tar.zst; fi
           - mv opt/baidunetdisk /app/extra/
-          - rm -rf baidunetdisk_*.deb data.tar.* control.tar.* debian-binary opt usr
+          - rm -rf baidunetdisk_*.deb data.tar.* control.tar.* debian-binary opt usr DEBIAN
     build-commands:
       - install -Dm644 com.baidu.NetDisk.metainfo.xml -t /app/share/metainfo/
       - install -Dm644 com.baidu.NetDisk.desktop -t /app/share/applications/
