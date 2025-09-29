@@ -35,14 +35,14 @@ modules:
         filename: baidunetdisk_amd64.deb
         only-arches: [x86_64]
         url: https://issuepcdn.baidupcs.com/issue/netdisk/LinuxGuanjia/4.17.7/baidunetdisk_4.17.7_amd64.deb
-        sha256: <填入amd64的sha256>
-        size: <填入文件大小>
+        sha256: 50ec18f05626a13f57ef034630416d481682bc1018539f33397d5c71bc653b3d
+        size: 103967440
       - type: extra-data
         filename: baidunetdisk_arm64.deb
         only-arches: [aarch64]
         url: https://issuepcdn.baidupcs.com/issue/netdisk/LinuxGuanjia/4.17.7/baidunetdisk_4.17.7_arm64.deb
-        sha256: <填入arm64的sha256>
-        size: <填入文件大小>
+        sha256: f8f5ed988f071c92570b163f06c001cbd7ededc1cca313756ea6cfa4814cb776
+        size: 100225528
       - type: file
         path: com.baidu.NetDisk.metainfo.xml
       - type: file
