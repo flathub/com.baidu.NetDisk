@@ -1,5 +1,4 @@
 {
   "only-arches": ["x86_64"],
-  "disable-external-data-checker": true,
-  "end-of-life": "This application has not seen any update for several years, and is not compatible with non-EOL runtimes anymore."
+  "disable-external-data-checker": true
 }
