@@ -1,9 +1,9 @@
 app-id: com.baidu.NetDisk
 runtime: org.freedesktop.Platform
-runtime-version: '23.08'
+runtime-version: '25.08'
 sdk: org.freedesktop.Sdk
 base: org.electronjs.Electron2.BaseApp
-base-version: '23.08'
+base-version: '25.08'
 separate-locales: false
 command: baidunetdisk
 finish-args:
@@ -34,12 +34,12 @@ modules:
       - type: extra-data
         filename: baidunetdisk.rpm
         only-arches: [x86_64]
-        url: https://issuepcdn.baidupcs.com/issue/netdisk/LinuxGuanjia/4.17.7/baidunetdisk_4.17.7_x86_64.rpm
-        sha256: 23244d957d33247d8e75727d2f808d95428f930019be82baa5d4e4c189fc989d
-        size: 103225050
+        url: https://pkg-ant.baidu.com/issue/netdisk/LinuxGuanjia/4.17.8/baidunetdisk_4.17.8_x86_64.rpm
+        sha256: 5db40fa5e07d1a2ef613d878989c367498f963f17f1c86a4e3918b1fb2e3ad5a
+        size: 137372337
         x-checker-data:
           type: json
-          url: https://pan.baidu.com/disk/cmsdata?app_id=250528&adCode=1&do=client
+          url: https://pan.baidu.com/disk/cmsdata?do=client
           version-query: .linux.version | capture("V(?<version>\\d+(?:\\.\\d+)+)") | .version
           url-query: .linux.url
       - type: file
