@@ -34,13 +34,14 @@ modules:
       - type: extra-data
         filename: baidunetdisk.rpm
         only-arches: [x86_64]
-        url: https://pkg-ant.baidu.com/issue/netdisk/LinuxGuanjia/4.17.8/baidunetdisk_4.17.8_x86_64.rpm
-        sha256: 5db40fa5e07d1a2ef613d878989c367498f963f17f1c86a4e3918b1fb2e3ad5a
-        size: 137372337
+        url: https://pkg-ant.baidu.com/issue/netdisk/LinuxGuanjia/8.5.2.427/baidunetdisk-8.5.2.x86_64.rpm
+        sha256: e23acc70c88769f51e14e7ec62f0fb9b5c1f26f6d7fa496faac4b7f22e08c1fe
+        size: 188049895
         x-checker-data:
           type: json
           url: https://pan.baidu.com/disk/cmsdata?do=client
-          version-query: .linux.version | capture("V(?<version>\\d+(?:\\.\\d+)+)") | .version
+          version-query: .linux.version | capture("V(?<version>\\d+(?:\\.\\d+)+)")
+            | .version
           url-query: .linux.url
       - type: file
         path: com.baidu.NetDisk.metainfo.xml
