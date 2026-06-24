@@ -115,7 +115,7 @@ modules:
         dest-filename: baidunetdisk
         commands:
           - export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"
-          - zypak-wrapper.sh /app/extra/baidunetdisk/baidunetdisk "$@"
+          - exec /app/extra/baidunetdisk/baidunetdisk --no-sandbox "$@"
       - type: script
         dest-filename: apply_extra
         commands:
