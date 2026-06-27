@@ -28,19 +28,126 @@ tags:
   - proprietary
 
 modules:
+  - shared-modules/intltool/intltool-0.51.json
+  - name: gtk2
+    cleanup:
+      - /bin
+      - /include
+      - /lib/gtk-2.0/include
+      - /lib/pkgconfig
+      - /share/aclocal
+      - /share/gtk-2.0
+      - /share/gtk-doc
+      - /share/locale
+      - "*.la"
+    config-opts:
+      - --disable-dependency-tracking
+      - --disable-cups
+      - --disable-gtk-doc-html
+      - --disable-introspection
+      - --with-xinput=xfree
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/gtk+/2.24/gtk+-2.24.33.tar.xz
+        sha256: ac2ac757f5942d318a311a54b0c80b5ef295f299c2a73c632f6bfb1ff49cc6da
+      - type: patch
+        paths:
+          - shared-modules/gtk2/gtk2-fix-crash-in-show-uri.patch
+          - shared-modules/gtk2/gtk2-gcc14.patch
+          - shared-modules/gtk2/gtk2-gcc15.patch
+  - name: sigc++
+    buildsystem: meson
+    config-opts:
+      - -Dbuild-documentation=false
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/libsigc++/2.10/libsigc++-2.10.8.tar.xz
+        sha256: 235a40bec7346c7b82b6a8caae0456353dc06e71f14bc414bcc858af1838719a
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+      - /lib/sigc++-2.0
+  - name: glibmm
+    buildsystem: meson
+    config-opts:
+      - -Dbuild-documentation=false
+      - -Dbuild-examples=false
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/glibmm/2.66/glibmm-2.66.4.tar.xz
+        sha256: 199ace5682d81b15a1d565480b4a950682f2db6402c8aa5dd7217d71edff81d5
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+      - /lib/glibmm-2.4
+      - /lib/giomm-2.4
+      - /lib/libglibmm_generate_extra_defs*
+  - name: cairomm
+    buildsystem: meson
+    config-opts:
+      - -Dbuild-documentation=false
+    sources:
+      - type: archive
+        url: https://gitlab.freedesktop.org/cairo/cairomm/-/archive/1.14.3/cairomm-1.14.3.tar.gz
+        sha256: 7dab16c5698acb284f178048337465b463fbed01c49e10bfe48acb0a852d873e
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+      - /lib/cairomm-1.0
+  - name: pangomm
+    buildsystem: meson
+    config-opts:
+      - -Dbuild-documentation=false
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/pangomm/2.46/pangomm-2.46.2.tar.xz
+        sha256: 57442ab4dc043877bfe3839915731ab2d693fc6634a71614422fb530c9eaa6f4
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+      - /lib/pangomm-1.4
+  - name: atkmm
+    buildsystem: meson
+    config-opts:
+      - -Dbuild-documentation=false
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/atkmm/2.28/atkmm-2.28.3.tar.xz
+        sha256: 7c2088b486a909be8da2b18304e56c5f90884d1343c8da7367ea5cd3258b9969
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+      - /lib/atkmm-1.6
+  - name: gtkmm
+    config-opts:
+      - --disable-dependency-tracking
+      - --disable-documentation
+    sources:
+      - type: archive
+        url: https://download.gnome.org/sources/gtkmm/2.24/gtkmm-2.24.5.tar.xz
+        sha256: 0680a53b7bf90b4e4bf444d1d89e6df41c777e0bacc96e9c09fc4dd2f5fe6b72
+    cleanup:
+      - /include
+      - /lib/pkgconfig
+      - /lib/gdkmm-2.4
+      - /lib/gtkmm-2.4
+      - /share/devhelp
+      - /share/doc
+      - "*.la"
   - name: baidunetdisk
     buildsystem: simple
     sources:
       - type: extra-data
         filename: baidunetdisk.rpm
         only-arches: [x86_64]
-        url: https://pkg-ant.baidu.com/issue/netdisk/LinuxGuanjia/4.17.8/baidunetdisk_4.17.8_x86_64.rpm
-        sha256: 5db40fa5e07d1a2ef613d878989c367498f963f17f1c86a4e3918b1fb2e3ad5a
-        size: 137372337
+        url: https://pkg-ant.baidu.com/issue/netdisk/LinuxGuanjia/8.5.2.427/baidunetdisk-8.5.2.x86_64.rpm
+        sha256: e23acc70c88769f51e14e7ec62f0fb9b5c1f26f6d7fa496faac4b7f22e08c1fe
+        size: 188049895
         x-checker-data:
           type: json
           url: https://pan.baidu.com/disk/cmsdata?do=client
-          version-query: .linux.version | capture("V(?<version>\\d+(?:\\.\\d+)+)") | .version
+          version-query: .linux.version | capture("V(?<version>\\d+(?:\\.\\d+)+)")
+            | .version
           url-query: .linux.url
       - type: file
         path: com.baidu.NetDisk.metainfo.xml
@@ -52,7 +159,7 @@ modules:
         dest-filename: baidunetdisk
         commands:
           - export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"
-          - zypak-wrapper.sh /app/extra/baidunetdisk/baidunetdisk "$@"
+          - exec /app/extra/baidunetdisk/baidunetdisk --no-sandbox "$@"
       - type: script
         dest-filename: apply_extra
         commands:
