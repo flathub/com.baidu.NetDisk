@@ -18,7 +18,6 @@ finish-args:
   - --filesystem=xdg-music:ro
   - --filesystem=xdg-pictures:ro
   - --filesystem=xdg-videos:ro
-  - --persist=.config/baidunetdisk
   - --talk-name=org.freedesktop.Notifications
   - --talk-name=org.kde.StatusNotifierWatcher
 build-options:
@@ -159,6 +158,7 @@ modules:
         dest-filename: baidunetdisk
         commands:
           - export TMPDIR="$XDG_RUNTIME_DIR/app/$FLATPAK_ID"
+          - ln -s $XDG_CONFIG_HOME/baidunetdisk ~/.config/baidunetdisk
           - exec /app/extra/baidunetdisk/baidunetdisk --no-sandbox "$@"
       - type: script
         dest-filename: apply_extra
