@@ -140,9 +140,9 @@ modules:
       - type: extra-data
         filename: baidunetdisk.rpm
         only-arches: [x86_64]
-        url: https://pkg-ant.baidu.com/issue/netdisk/LinuxGuanjia/8.7.0/baidunetdisk-8.7.0.x86_64.rpm
-        sha256: c593055d4a5090bc22c6c55c4d823090c5d92e4b8ffde44781312bde69a6b1cd
-        size: 211922783
+        url: https://pkg-ant.baidu.com/issue/netdisk/LinuxGuanjia/8.9.7/baidunetdisk-8.9.7.x86_64.rpm
+        sha256: 46aea8a0b6784e43037e6f7c88eef2e784ca80510222bd004ad02b09d005598e
+        size: 199142376
         x-checker-data:
           type: json
           url: https://pan.baidu.com/disk/cmsdata?do=client
